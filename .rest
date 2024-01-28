@@ -1,0 +1,91 @@
+# INVENTORY COLLECTION:
+###
+GET http://localhost:7443/apis/inventory/
+###
+
+###
+GET http://localhost:7443/apis/inventory/65b15b5685210623caa9ac44
+###
+
+###
+POST http://localhost:7443/apis/inventory/ HTTP/1.1
+
+Content-Type: application/json
+{
+    "item": "SFP-10G-LR=",
+    "category": "Product",
+    "comments": "In stock",
+    "description": "10GBASE-LR SFP Module",
+    "discontinued": false,
+    "location": "Local",
+    "manufacture": "Cisco",
+    "stock_level": "35",
+    "supplier": "Intcomex"
+}
+###
+
+###
+PUT http://localhost:7443/apis/inventory/65b596f77991f02ed659c95f HTTP/1.1
+
+Content-Type: application/json
+{
+    "item": "SFP-1G-LR=",
+    "category": "Product",
+    "comments": "In stock",
+    "description": "1GBASE-LR SFP Module",
+    "discontinued": false,
+    "location": "Local",
+    "manufacture": "Cisco",
+    "stock_level": "70",
+    "supplier": "Datasys"
+}
+###
+
+###
+DELETE http://localhost:7443/apis/inventory/65b596f77991f02ed659c95f HTTP/1.1
+###
+
+# SUPPLIER COLLECTION:
+###
+GET http://localhost:7443/apis/supplier/
+###
+
+###
+GET http://localhost:7443/apis/supplier/65b15e6a85210623caa9ac45
+###
+
+###
+POST http://localhost:7443/apis/supplier/ HTTP/1.1
+
+Content-Type: application/json
+{
+    "company": "TD-Synex",
+    "firstName": "Alexander",
+    "lastName": "Weeks",
+    "email": "aweeks@td-synex.com",
+    "jobTitle": "Account Manager",
+    "address": "Costa del Este, Blvd. 74",
+    "city": "Panama",
+    "state": "Panama"
+}
+###
+
+###
+PUT http://localhost:7443/apis/supplier/65b0707fdf1487ae5d6d2dee HTTP/1.1
+
+Content-Type: application/json
+{
+    "company": "TD-Synex",
+    "firstName": "Karl",
+    "lastName": "Jeff",
+    "email": "kjeff@td-synex.com",
+    "jobTitle": "BDM",
+    "address": "Costa del Este, Blvd. 74",
+    "city": "Bogota",
+    "state": "Palmas"
+}
+###
+
+###
+DELETE http://localhost:7443/apis/supplier/65b0700ddf1487ae5d6d2ded HTTP/1.1
+###

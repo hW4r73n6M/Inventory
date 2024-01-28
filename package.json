@@ -1,0 +1,23 @@
+{
+  "name": "inventory",
+  "version": "1.0.0",
+  "description": "Project W03-W04",
+  "main": "./src/server.js",
+  "scripts": {
+    "test": "nodemon",
+    "start": "node ./src/server.js",
+    "swagger": "node ./swagger.js"
+  },
+  "author": "Herick Guillen",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.20.2",
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
+    "express-validator": "^7.0.1",
+    "mongodb": "^6.3.0",
+    "nodemon": "^3.0.3",
+    "swagger-autogen": "^2.23.7",
+    "swagger-ui-express": "^5.0.0"
+  }
+}
