@@ -13,9 +13,6 @@
   "paths": {
     "/inventories/": {
       "get": {
-        "tags": [
-          "Inventories"
-        ],
         "description": "",
         "responses": {
           "200": {
@@ -26,6 +23,9 @@
           },
           "500": {
             "description": "Internal Server Error"
+          },
+          "default": {
+            "description": ""
           }
         }
       },
@@ -209,9 +209,6 @@
     },
     "/suppliers/": {
       "get": {
-        "tags": [
-          "Suppliers"
-        ],
         "description": "",
         "responses": {
           "200": {
@@ -222,6 +219,9 @@
           },
           "500": {
             "description": "Internal Server Error"
+          },
+          "default": {
+            "description": ""
           }
         }
       },
