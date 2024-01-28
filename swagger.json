@@ -136,7 +136,17 @@
         }
       }
     },
-    "/api-docs": {
+    "/inventory/api-docs": {
+      "get": {
+        "description": "",
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/supplier/api-docs": {
       "get": {
         "description": "",
         "responses": {
