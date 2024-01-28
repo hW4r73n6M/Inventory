@@ -32,11 +32,14 @@ const getSupplierById = async (req, res) => {
 const createNewSupplier = async (req, res) => {
     try {
         let iData = req.body;
-        body('firstName').exists().isLength({ min: 3}).withMessage('must be at least 3 chars long.')
+        body('company').exists().isLength({ min: 3}).withMessage('must be at least 3 chars long.')
+        body('firstName').exists().isLength({ min: 2}).withMessage('must be at least 2 chars long.')
         body('lastName').exists().isLength({ min: 3}).withMessage('must be at least 3 chars long.')
-        body('email').exists().isEmail().withMessage('must be a valid email.')
-        body('favoriteColor').exists().not().isEmpty().withMessage('must contain the color name.')
-        body('birthday').exists().isDate().withMessage('must be a date.')
+        body('email').exists().isEmail.withMessage('must contain a valid email address.')
+        body('jobTitle').exists().not().isEmpty().withMessage('must contain a job title.')
+        body('address').exists().not().isEmpty().withMessage('must contain an address.')
+        body('city').exists().not().isEmpty().withMessage('must contain a city name.')
+        body('state').exists().not().isEmpty().withMessage('must contain a state name.')
         
         
         const errors = validationResult(req);

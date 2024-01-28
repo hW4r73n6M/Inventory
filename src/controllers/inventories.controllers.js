@@ -32,11 +32,15 @@ const getInventoryById = async (req, res) => {
 const createNewInventory = async (req, res) => {
     try {
         let iData = req.body;
-        body('firstName').exists().isLength({ min: 3}).withMessage('must be at least 3 chars long.')
-        body('lastName').exists().isLength({ min: 3}).withMessage('must be at least 3 chars long.')
-        body('email').exists().isEmail().withMessage('must be a valid email.')
-        body('favoriteColor').exists().not().isEmpty().withMessage('must contain the color name.')
-        body('birthday').exists().isDate().withMessage('must be a date.')
+        body('item').exists().isLength({ min: 5}).withMessage('must be at least 5 chars long.')
+        body('category').exists().isLength({ min: 7}).withMessage('must be at least 7 chars long.')
+        body('comments').isString().withMessage('must be a valid comment.')
+        body('description').exists().not().isEmpty().withMessage('must contain an item description.')
+        body('discontinued').exists().isBoolean().withMessage('must be true/false.')
+        body('location').exists().not().isEmpty().withMessage('must contain an address.')
+        body('manufacture').exists().not().isEmpty().withMessage('must contain a manufacture name.')
+        body('stock_level').exists().isNumeric().withMessage('must be a valid number.')
+        body('supplier').exists().not().isEmpty().withMessage('must contain a supplier name.')
         
         
         const errors = validationResult(req);
