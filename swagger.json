@@ -6,7 +6,7 @@
     "version": "1.0.0"
   },
   "host": "localhost:7443",
-  "basePath": "/apis/inventory",
+  "basePath": "/",
   "schemes": [
     "http"
   ],
