@@ -1,9 +1,11 @@
 const express = require('express');
 const srvFn = require('../services/suppliers.services');
-const { body, validationResult } = require('express-validator');
+const ObjectId = require('mongodb').ObjectId;
+// const { body, validationResult } = require('express-validator');
 
 
 const getAllSuppliers = async (req, res) => {
+    //#swagger.tags=['Suppliers']
     try {
         let iData = {};
         const response = await srvFn.getSuppliers(iData);
@@ -16,6 +18,7 @@ const getAllSuppliers = async (req, res) => {
 
 
 const getSupplierById = async (req, res) => {
+    //#swagger.tags=['Suppliers']
     try {
         let iData = {
             _id: req.params.id
@@ -30,25 +33,20 @@ const getSupplierById = async (req, res) => {
 
 
 const createNewSupplier = async (req, res) => {
-    try {
-        let iData = req.body;
-        body('company').exists().isLength({ min: 3}).withMessage('must be at least 3 chars long.')
-        body('firstName').exists().isLength({ min: 2}).withMessage('must be at least 2 chars long.')
-        body('lastName').exists().isLength({ min: 3}).withMessage('must be at least 3 chars long.')
-        body('email').exists().isEmail.withMessage('must contain a valid email address.')
-        body('jobTitle').exists().not().isEmpty().withMessage('must contain a job title.')
-        body('address').exists().not().isEmpty().withMessage('must contain an address.')
-        body('city').exists().not().isEmpty().withMessage('must contain a city name.')
-        body('state').exists().not().isEmpty().withMessage('must contain a state name.')
-        
-        
-        const errors = validationResult(req);
-        if (!errors.isEmpty()) {
-            return res.status(400).json({ errors: errors.array() });
-        }
+    //#swagger.tags=['Suppliers']
+    try {     
+        const iData = {
+            company: req.body.company,
+            firstName: req.body.firstName,
+            lastName: req.body.lastName,
+            email: req.body.email,
+            jobTitle: req.body.jobTitle,
+            address: req.body.address,
+            city: req.body.city,
+            state: req.body.state
+        };
 
-
-        const response = await srvFn.createSupplier(iData);        
+        const response = await srvFn.createSupplier(iData);
         if (response.error) { return res.status(404).json(response)}
         return res.json(response)
     } catch (err) {
@@ -58,18 +56,24 @@ const createNewSupplier = async (req, res) => {
 
 
 const modifySupplierById = async (req, res) => {
+    //#swagger.tags=['Suppliers']
     try {
-        let iData = {
-            _id: req.params.id
-        };
-        const user = {
+        //validation of the id
+        if (!ObjectId.isValid(req.params.id)) {
+            res.status(400).json('Must use a valid book id to update a book.');
+        }
+        const supplierId = new ObjectId(req.params.id);
+        const iData = {
+            company: req.body.company,
             firstName: req.body.firstName,
             lastName: req.body.lastName,
             email: req.body.email,
-            favoriteColor: req.body.favoriteColor,
-            birthday: req.body.birthday
+            jobTitle: req.body.jobTitle,
+            address: req.body.address,
+            city: req.body.city,
+            state: req.body.state
         };
-        const response = await srvFn.modifySupplier(iData, user);
+        const response = await srvFn.modifySupplier(supplierId, iData);
         if (response.error) { return res.status(404).json(response)}
         return res.json(response)
     } catch (err) {
@@ -79,6 +83,7 @@ const modifySupplierById = async (req, res) => {
 
 
 const deleteSupplierById = async (req, res) => {
+    //#swagger.tags=['Suppliers']
     try {
         let iData = {
             _id: req.params.id

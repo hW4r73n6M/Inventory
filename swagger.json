@@ -5,14 +5,17 @@
     "description": "Inventory Application Programming Interface",
     "version": "1.0.0"
   },
-  "host": "localhost:7443",
-  "basePath": "/apis/inventory",
+  "host": "cse-341-inventory.onrender.com",
+  "basePath": "/",
   "schemes": [
-    "http"
+    "https"
   ],
   "paths": {
-    "/": {
+    "/inventories/": {
       "get": {
+        "tags": [
+          "Inventories"
+        ],
         "description": "",
         "responses": {
           "200": {
@@ -27,16 +30,57 @@
         }
       },
       "post": {
+        "tags": [
+          "Inventories"
+        ],
         "description": "",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "item": {
+                  "example": "any"
+                },
+                "category": {
+                  "example": "any"
+                },
+                "comments": {
+                  "example": "any"
+                },
+                "description": {
+                  "example": "any"
+                },
+                "discontinued": {
+                  "example": "any"
+                },
+                "location": {
+                  "example": "any"
+                },
+                "manufacture": {
+                  "example": "any"
+                },
+                "stock_level": {
+                  "example": "any"
+                },
+                "supplier": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
         "responses": {
           "200": {
             "description": "OK"
           },
-          "400": {
-            "description": "Bad Request"
-          },
           "404": {
             "description": "Not Found"
+          },
+          "412": {
+            "description": "Precondition Failed"
           },
           "500": {
             "description": "Internal Server Error"
@@ -44,8 +88,11 @@
         }
       }
     },
-    "/{id}": {
+    "/inventories/{id}": {
       "get": {
+        "tags": [
+          "Inventories"
+        ],
         "description": "",
         "parameters": [
           {
@@ -68,6 +115,9 @@
         }
       },
       "put": {
+        "tags": [
+          "Inventories"
+        ],
         "description": "",
         "parameters": [
           {
@@ -82,19 +132,31 @@
             "schema": {
               "type": "object",
               "properties": {
-                "firstName": {
+                "item": {
                   "example": "any"
                 },
-                "lastName": {
+                "category": {
                   "example": "any"
                 },
-                "email": {
+                "comments": {
                   "example": "any"
                 },
-                "favoriteColor": {
+                "description": {
                   "example": "any"
                 },
-                "birthday": {
+                "discontinued": {
+                  "example": "any"
+                },
+                "location": {
+                  "example": "any"
+                },
+                "manufacture": {
+                  "example": "any"
+                },
+                "stock_level": {
+                  "example": "any"
+                },
+                "supplier": {
                   "example": "any"
                 }
               }
@@ -105,8 +167,14 @@
           "200": {
             "description": "OK"
           },
+          "400": {
+            "description": "Bad Request"
+          },
           "404": {
             "description": "Not Found"
+          },
+          "412": {
+            "description": "Precondition Failed"
           },
           "500": {
             "description": "Internal Server Error"
@@ -114,6 +182,9 @@
         }
       },
       "delete": {
+        "tags": [
+          "Inventories"
+        ],
         "description": "",
         "parameters": [
           {
@@ -136,22 +207,192 @@
         }
       }
     },
-    "/inventory/api-docs": {
+    "/suppliers/": {
       "get": {
+        "tags": [
+          "Suppliers"
+        ],
         "description": "",
         "responses": {
-          "default": {
-            "description": ""
+          "200": {
+            "description": "OK"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Suppliers"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "company": {
+                  "example": "any"
+                },
+                "firstName": {
+                  "example": "any"
+                },
+                "lastName": {
+                  "example": "any"
+                },
+                "email": {
+                  "example": "any"
+                },
+                "jobTitle": {
+                  "example": "any"
+                },
+                "address": {
+                  "example": "any"
+                },
+                "city": {
+                  "example": "any"
+                },
+                "state": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "412": {
+            "description": "Precondition Failed"
+          },
+          "500": {
+            "description": "Internal Server Error"
           }
         }
       }
     },
-    "/supplier/api-docs": {
+    "/suppliers/{id}": {
       "get": {
+        "tags": [
+          "Suppliers"
+        ],
         "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
         "responses": {
-          "default": {
-            "description": ""
+          "200": {
+            "description": "OK"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Suppliers"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "company": {
+                  "example": "any"
+                },
+                "firstName": {
+                  "example": "any"
+                },
+                "lastName": {
+                  "example": "any"
+                },
+                "email": {
+                  "example": "any"
+                },
+                "jobTitle": {
+                  "example": "any"
+                },
+                "address": {
+                  "example": "any"
+                },
+                "city": {
+                  "example": "any"
+                },
+                "state": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "412": {
+            "description": "Precondition Failed"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Suppliers"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
           }
         }
       }

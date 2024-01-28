@@ -7,10 +7,11 @@ const doc = {
         description: "Inventory Application Programming Interface"
     },
     host: "localhost:".concat(environment.HTTP_PORT),
-    schemes: ["http"],
+    schemes: ["http", "https"],
 };
 
 const outputFile = './swagger.json';
-const endpointsFiles = ["./src/routes/inventories.route.js", "./src/routes/suppliers.route.js"];
+const endpointsFiles = ['./src/routes/index.js'];
+// const endpointsFiles = ["./src/routes/inventories.route.js", "./src/routes/suppliers.route.js"];
 
 swaggerAutogen(outputFile, endpointsFiles, doc);

@@ -58,7 +58,7 @@ const createSupplier = async (iData) => {
 
 const modifySupplier = async (iData, user) => {
     try {
-        const docId = new environment.ObjectId(iData._id);
+        const docId = new environment.ObjectId(iData);
         const docBody = JSON.stringify(iData.body);
         const client = await environment.MongoClient.connect(environment.mongoServer);
         const db = client.db(environment.mongoDB);
