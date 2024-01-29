@@ -21,7 +21,7 @@ const getInventoryById = async (req, res) => {
     //#swagger.tags=['Inventories']
     //validation of the id
     if (!ObjectId.isValid(req.params.id)) {
-        res.status(400).json('Must use a valid id to retrieve the supplier.');
+        res.status(400).json('Must use a valid id to retrieve the inventory.');
     } else {
         try {
             let iData = {
@@ -93,7 +93,7 @@ const deleteInventoryById = async (req, res) => {
     //#swagger.tags=['Inventories']
     //validation of the id
     if (!ObjectId.isValid(req.params.id)) {
-        res.status(400).json('Must use a valid id to delete the supplier.');
+        res.status(400).json('Must use a valid id to delete the inventory.');
     } else {
         try {
             let iData = {
