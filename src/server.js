@@ -16,8 +16,6 @@ console.log("Running Environment: ", environment.ENV.toUpperCase());
 app.use(cors(options))
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
-// app.use('/apis/inventory/', require('./routes/inventories.route'));
-// app.use('/apis/supplier/', require('./routes/suppliers.route'));
 app.use('/', require('./routes/index'));
 app.use(bodyParser.json());
 

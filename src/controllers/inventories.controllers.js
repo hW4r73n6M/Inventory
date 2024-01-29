@@ -19,15 +19,20 @@ const getAllInventories = async (req, res) => {
 
 const getInventoryById = async (req, res) => {
     //#swagger.tags=['Inventories']
-    try {
-        let iData = {
-            _id: req.params.id
-        };
-        const response = await srvFn.getInventory(iData);
-        if (response.error) { return res.status(404).json(response)}
-        return res.json(response)
-    } catch (err) {
-        return res.status(500).json({error: true, message: 'Error Interno del Sistema: ' + err});
+    //validation of the id
+    if (!ObjectId.isValid(req.params.id)) {
+        res.status(400).json('Must use a valid id to retrieve the supplier.');
+    } else {
+        try {
+            let iData = {
+                _id: req.params.id
+            };
+            const response = await srvFn.getInventory(iData);
+            if (response.error) { return res.status(404).json(response)}
+            return res.json(response)
+        } catch (err) {
+            return res.status(500).json({error: true, message: 'Error Interno del Sistema: ' + err});
+        }
     }
 }
 
@@ -61,7 +66,7 @@ const modifyInventoryById = async (req, res) => {
     try {
         //validation of the id
         if (!ObjectId.isValid(req.params.id)) {
-            res.status(400).json('Must use a valid book id to update a book.');
+            res.status(400).json('Must use a valid id to update the inventory.');
         }
         const inventoryId = new ObjectId(req.params.id);
         const iData = {
@@ -86,15 +91,20 @@ const modifyInventoryById = async (req, res) => {
 
 const deleteInventoryById = async (req, res) => {
     //#swagger.tags=['Inventories']
-    try {
-        let iData = {
-            _id: req.params.id
-        };
-        const response = await srvFn.deleteInventory(iData);
-        if (response.error) { return res.status(404).json(response)}
-        return res.json(response)
-    } catch (err) {
-        return res.status(500).json({error: true, message: 'Error Interno del Sistema: ' + err});
+    //validation of the id
+    if (!ObjectId.isValid(req.params.id)) {
+        res.status(400).json('Must use a valid id to delete the supplier.');
+    } else {
+        try {
+            let iData = {
+                _id: req.params.id
+            };
+            const response = await srvFn.deleteInventory(iData);
+            if (response.error) { return res.status(404).json(response)}
+            return res.json(response)
+        } catch (err) {
+            return res.status(500).json({error: true, message: 'Error Interno del Sistema: ' + err});
+        }
     }
 }
 
